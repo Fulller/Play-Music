@@ -153,7 +153,7 @@ const app = {
             {transform: 'rotate(360deg)'},
         ],
         {
-            duration: 100,
+            duration: 3000,
             iterations: Infinity
         }
         )
