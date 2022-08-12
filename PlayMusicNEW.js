@@ -18,90 +18,104 @@ let nowTime = $('#nowtime')
 let maxTime = $('#maxtime')
 let volume = $('#volume')
 let volumeValue = $('#volume-value')
+let volumeIcon = $('#volume-icon')
+
 
 const app = {
-    currentIndex: 4,
+    currentIndex: 0,
     isPlay: false,
     isRandom: false,
     isRepeat: false,
     songs: [
         {
-          name: "Bạc Phận",
-          singer: "Jack & KayKem",
-          path: "./ListAudio/bac_phan.mp3",
-          image: "./Thumbnail/bac_phan.jfif"
+          name: "Anh đéo cần gì nhiều ngoài em",
+          singer: "Đen",
+          path: "./ListAudio/adcgnne.mp3",
+          image: "./Thumbnail/adcgnne.webp"
         },
         {
-          name: "Blingding Light",
-          singer: "The Weetken",
-          path: "./ListAudio/blinding_lights.mp3",
-          image:"./Thumbnail/blingding_lights.jfif"
+          name: "Ai muốn nghe không",
+          singer: "Đen",
+          path: "./ListAudio/amgk.mp3",
+          image:"./Thumbnail/amgk.webp"
         },
         {
-          name: "Chạy ngay đi",
+          name: "Âm thầm bên em",
           singer: "Sơn Tùng MTP",
-          path: "./ListAudio/chay_ngay_di.mp3",
-          image: "./Thumbnail/chay_ngay_di.jfif"
+          path: "./ListAudio/atbe.mp3",
+          image: "./Thumbnail/atbe.webp"
         },
         {
-          name: "IceMan",
-          singer: "Sol7 & MCK",
-          path: "./ListAudio/iceman.mp3",
-          image:"./Thumbnail/iceman.jfif"
+          name: "Buông đôi tay nhau ra",
+          singer: "Sơn Tùng MTP",
+          path: "./ListAudio/bdtnr.mp3",
+          image: "./Thumbnail/bdtnr.webp"
         },
         {
-          name: "Hồng Nhan",
-          singer: "Jack",
-          path: "./ListAudio/jack_hong_nhan.mp3",
-          image: "./Thumbnail/hong_nhan.jfif"
+          name: "Chắc ai đó sẽ về",
+          singer: "Sơn Tùng MTP",
+          path: "./ListAudio/cadsv.mp3",
+          image: "./Thumbnail/cadsv.webp"
         },
         {
-            name: "Nguyên team đi vào hết",
-            singer: "Binz",
-            path: "./ListAudio/nguyen_team_di_vao_het.mp3",
-            image: "./Thumbnail/nguyen_team.jfif"
+            name: "Có chắc yêu là đây",
+            singer: "Sơn Tùng MTP",
+            path: "./ListAudio/ccyld.mp3",
+            image: "./Thumbnail/ccyld.webp"
         },
         {
-            name: "Born this way",
-            singer: "Vannda",
-            path: "./ListAudio/born.mp3",
-            image: "./Thumbnail/born.webp"
+            name: "Đố em biết anh đang nghĩ gì",
+            singer: "Đen",
+            path: "./ListAudio/debadng.mp3",
+            image: "./Thumbnail/debadng.webp"
           },
           {
-            name: "Khmer Blood",
-            singer: "Vannda",
-            path: "./ListAudio/khmer_blood.mp3",
-            image:"./Thumbnail/khmre_blood.webp"
+            name: "Hai triệu năm",
+            singer: "Đen",
+            path: "./ListAudio/htn.mp3",
+            image: "./Thumbnail/htn.webp"
           },
           {
-            name: "MaMa",
-            singer: "Vannda",
-            path: "./ListAudio/mama.mp3",
-            image: "./Thumbnail/mama.webp"
+            name: "Lối nhỏ",
+            singer: "Đen",
+            path: "./ListAudio/ln.mp3",
+            image: "./Thumbnail/ln.webp"
           },
           {
-            name: "Queen Bee",
-            singer: "Vannda",
-            path: "./ListAudio/queen_bee.mp3",
-            image:"./Thumbnail/queen_bee.webp"
+            name: "Lạc trôi",
+            singer: "Sơn Tùng MTP",
+            path: "./ListAudio/lt.mp3",
+            image: "./Thumbnail/lt.webp"
           },
           {
-            name: "Skull",
-            singer: "Vannda",
-            path: "./ListAudio/skull.mp3",
-            image: "./Thumbnail/skull.webp"
+            name: "Muộn rồi mà sao còn",
+            singer: "Sơn Tùng MTP",
+            path: "./ListAudio/mrmsc.mp3",
+            image: "./Thumbnail/mrmsc.webp"
           },
           {
-              name: "Young Man",
-              singer: "Vannda",
-              path: "./ListAudio/young_man.mp3",
-              image: "./Thumbnail/young_man.webp"
+              name: "Một triệu like",
+              singer: "Đen",
+              path: "./ListAudio/mtl.mp3",
+              image: "./Thumbnail/mtl.webp"
           },
           {
-            name: "Bên trên tầng lầu",
-            singer: "Tân dung Tăng",
-            path: "./ListAudio/bentrentanglau.mp3",
-            image: "./Thumbnail/bentrentanglau.webp"
+            name: "Mang tiền về cho mẹ",
+            singer: "Đen",
+            path: "./ListAudio/mtvcm.mp3",
+            image: "./Thumbnail/mtvcm.webp"
+        },
+        {
+            name: "Nắng ấm xa dần",
+            singer: "Sơn Tùng MTP",
+            path: "./ListAudio/naxd.mp3",
+            image: "./Thumbnail/naxd.webp"
+        },
+        {
+            name: "Nơi này có anh",
+            singer: "Sơn Tùng MTP",
+            path: "./ListAudio/nnca.mp3",
+            image: "./Thumbnail/nnca.webp"
         },
     ],
     defineProperties: function (){
@@ -249,6 +263,11 @@ const app = {
         }
         audio.onvolumechange = function (){
             volumeValue.innerText = Math.ceil(audio.volume*100)
+            if(audio.volume ==0 ){
+                volumeIcon.innerHTML = '<i class="fa-solid fa-volume-off"></i>'
+            }else{
+                volumeIcon.innerHTML = '<i class="fa-solid fa-volume-high"></i>'
+            }
         }
         web.onkeyup = function (e){
             switch(e.which){

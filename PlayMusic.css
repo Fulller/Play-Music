@@ -10,7 +10,7 @@
   }
   
   body {
-    background-color: pink;
+    background-image: linear-gradient(rgb(143, 63, 63), rgb(75, 68, 144));
   }
   
   html {
@@ -148,13 +148,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 10px;
+  }
+  #volume{
+    background-color: rgba(0, 0, 255, 0.441);
+  }
+  #volume::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    background-color: rgb(255, 0, 0);
+    cursor: pointer;
+    border-radius: 10px;
   }
   #volume-value{
-    
   }
   /* PLAYLIST */
   .playlist {
-    margin-top: 430px;
+    margin-top: 436px;
     padding: 12px;
   }
   
